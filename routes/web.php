@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\locationsController; 
+use App\Http\Controllers\episodesController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller(locationsController::class)->group(function () {
-                  
+Route::controller(locationsController::class)->group(function () {                  
     Route::get('/location', 'index');
     Route::get('/location/{id}', 'show');
+ });
+
+ Route::controller(episodesController::class)->group(function () {                  
+    Route::get('/episode', 'index');
+    Route::get('/episode/{id}', 'show');
  });
