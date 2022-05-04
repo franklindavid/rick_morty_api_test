@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\locationsController; 
 use App\Http\Controllers\episodesController; 
+use App\Http\Controllers\crudController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,10 @@ Route::controller(locationsController::class)->group(function () {
  Route::controller(episodesController::class)->group(function () {                  
     Route::get('/episode', 'index');
     Route::get('/episode/{id}', 'show');
+ });
+
+ Route::controller(crudController::class)->group(function () {                  
+    Route::get('/{entity}', 'index');
+    Route::delete('/{entity}', 'delete');
+    // Route::get('/episode/{id}', 'show');
  });
