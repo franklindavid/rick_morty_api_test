@@ -33,5 +33,6 @@ Route::controller(locationsController::class)->group(function () {
  Route::controller(crudController::class)->group(function () {                  
     Route::get('/{entity}', 'index');
     Route::delete('/{entity}', 'delete');
-    // Route::get('/episode/{id}', 'show');
+    Route::post('/{entity}', 'insert');
+    Route::patch('/{entity}', 'insert');
  });

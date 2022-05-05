@@ -26,6 +26,19 @@ class crudController extends Controller
     } 
 
     public function delete(Request $request, $entity){
-        dd('delete');
-    } 
+        $query = DB::table($entity)->where('id',$request->id)->delete();
+        return response()->json([
+            'error'=> false,
+            'msg'=> 'Registro eliminado'
+            ])->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);;
+    }
+
+    public function insert(Request $request, $entity){
+        DB::table($entity)->upsert([$request->all()
+        ], ['id']);
+        return response()->json([
+            'error'=> false,
+            'msg'=> 'Registro creado'
+        ])->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);        
+    }
 }
